@@ -1,11 +1,9 @@
 package org.main.model;
 
 import lombok.Data;
-
 @Data
 
 public class ErrorModel {
-
     String rule;
     String sheetName;
     int rowNo;
@@ -19,10 +17,5 @@ public class ErrorModel {
         this.columnHeader = columnHeader;
         this.info = info;
     }
-
-
-
-
-
 
 }

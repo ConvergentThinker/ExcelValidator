@@ -1,5 +1,5 @@
 
-package org.main.filechooser;
+package org.main.textfilefc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,13 +7,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 
-
-public class ImagePreview extends JComponent
+public class TextPreview extends JComponent
                           implements PropertyChangeListener {
     ImageIcon thumbnail = null;
     File file = null;
 
-    public ImagePreview(JFileChooser fc) {
+    public TextPreview(JFileChooser fc) {
         setPreferredSize(new Dimension(100, 50));
         fc.addPropertyChangeListener(this);
     }
@@ -37,7 +36,7 @@ public class ImagePreview extends JComponent
                 thumbnail = new ImageIcon(tmpIcon.getImage().
                                           getScaledInstance(-1, 50,
                                                       Image.SCALE_DEFAULT));
-            } else {
+            } else { //no need to miniaturize
                 thumbnail = tmpIcon;
             }
         }

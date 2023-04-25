@@ -1,11 +1,13 @@
 
-package org.main.filechooser;
+
+package org.main.textfilefc;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 
-public class ImageFilter extends FileFilter {
+public class TextFilter extends FileFilter {
 
+    //Accept all directories and all gif, jpg, tiff, or png files.
     public boolean accept(File f) {
         if (f.isDirectory()) {
             return true;
@@ -13,7 +15,7 @@ public class ImageFilter extends FileFilter {
 
         String extension = Utils.getExtension(f);
         if (extension != null) {
-            if (extension.equals(Utils.xlsx)
+            if (extension.equals(Utils.rule)
 
              ) {
                     return true;
@@ -25,7 +27,8 @@ public class ImageFilter extends FileFilter {
         return false;
     }
 
+    //The description of this filter
     public String getDescription() {
-        return "Just Excel";
+        return ".txt file only";
     }
 }

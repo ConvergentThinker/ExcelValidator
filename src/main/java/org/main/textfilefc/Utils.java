@@ -1,13 +1,11 @@
-
-package org.main.filechooser;
+package org.main.textfilefc;
 
 import javax.swing.*;
 import java.io.File;
 
-
 public class Utils {
 
-    public final static String xlsx = "xlsx";
+    public final static String rule = "txt";
 
     /*
      * Get the extension of a file.

@@ -1,13 +1,13 @@
 
-package org.main.filechooser;
+
+package org.main.loadrulefc;
 
 import javax.swing.*;
 import java.io.File;
 
-
 public class Utils {
 
-    public final static String xlsx = "xlsx";
+    public final static String rule = "rule";
 
     /*
      * Get the extension of a file.
@@ -22,7 +22,6 @@ public class Utils {
         }
         return ext;
     }
-
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = Utils.class.getResource(path);

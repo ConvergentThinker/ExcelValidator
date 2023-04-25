@@ -1,10 +1,12 @@
-package org.main.filechooser;
+
+
+package org.main.textfilefc;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileView;
 import java.io.File;
 
-public class ImageFileView extends FileView {
+public class TextFileView extends FileView {
 
     ImageIcon xlsxIcon = Utils.createImageIcon("images/pngIcon.png");
 
@@ -25,8 +27,8 @@ public class ImageFileView extends FileView {
         String type = null;
 
         if (extension != null) {
-            if (extension.equals(Utils.xlsx) ||
-                extension.equals(Utils.xlsx)) {
+            if (extension.equals(Utils.rule) ||
+                extension.equals(Utils.rule)) {
                 type = "Excel";
             }
         }
@@ -38,8 +40,8 @@ public class ImageFileView extends FileView {
         Icon icon = null;
 
         if (extension != null) {
-            if (extension.equals(Utils.xlsx) ||
-                extension.equals(Utils.xlsx)) {
+            if (extension.equals(Utils.rule) ||
+                extension.equals(Utils.rule)) {
                 icon = xlsxIcon;
             }
         }

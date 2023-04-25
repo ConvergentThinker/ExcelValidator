@@ -1,6 +1,6 @@
 package org.main.datavalidator;
-import org.main.jTable.Rule1.Rule1Model;
-import org.main.jTable.Rule2.Rule2Model;
+
+import org.main.jtable.Rule2.Rule2Model;
 import org.main.model.ErrorModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +10,8 @@ import java.util.regex.Pattern;
 
 public class Rule2ValidatorEngine {
 
-
     private List<ErrorModel> errors;
-
     private List<Rule2Model> lstRule2;
-
 
     public Rule2ValidatorEngine() {
         errors = new ArrayList<>();
@@ -41,7 +38,6 @@ public class Rule2ValidatorEngine {
             data = "Rule 2 Processed successfully. No issues found. ";
         }
 
-
         return data;
     }
 
@@ -61,18 +57,15 @@ public class Rule2ValidatorEngine {
                 switch (rule.getRuleExecutionType()) {
 
                     case "All Rows":
-                        System.out.println("ALL");
 
                         Map<String, String> map = getSpecificColumnAllValues(inputExcelData, rule.getSheet(), rule.getTargetHeader().trim());
 
                         for (Map.Entry<String, String> entry : map.entrySet()) {
-                            System.out.println(entry.getKey() + " : " + entry.getValue());
+
                             String cellData = entry.getValue().trim();
-                            System.out.println("cellData "+ cellData);
-                            System.out.println("Format: "+ rule.getFormat());
+
                             String format = rule.getFormat().trim();
                             int dataLength = entry.getValue().trim().length();
-                            // start
 
                             if (format.equals("Text")) {
 
@@ -107,9 +100,6 @@ public class Rule2ValidatorEngine {
                                 }
 
                             } else {
-                                System.out.println("isValidDate(cellData) "+ isValidDate(cellData));
-
-
 
                                 if(dataLength==0){
                                     errors.add(new ErrorModel("Rule2",rule.getSheet(),Integer.parseInt(entry.getKey().split("#")[1]),rule.getTargetHeader(),"Expected Date format is: "+ format+ " but Actual is Empty Cell"));
@@ -125,7 +115,7 @@ public class Rule2ValidatorEngine {
                         break;
 
                     case "Custom":
-                        System.out.println("CUSTOM");
+
 
                         Map<String, String> mapCustom = getSpecificColumnAllValues(inputExcelData, rule.getSheet(), rule.getTargetHeader().trim());
 
@@ -136,10 +126,9 @@ public class Rule2ValidatorEngine {
                             int toNo = Integer.parseInt(rule.getToRow());
 
                             if(Integer.parseInt(entry.getKey().split("#")[1]) >= fromNo ){
-                                System.out.println(entry.getKey() + " : " + entry.getValue());
+
                                 String cellData = entry.getValue().trim();
-                                System.out.println("cellData "+ cellData);
-                                System.out.println("Format: "+ rule.getFormat());
+
                                 String format = rule.getFormat().trim();
                                 int dataLength = entry.getValue().trim().length();
 
@@ -176,7 +165,6 @@ public class Rule2ValidatorEngine {
                                     }
 
                                 } else {
-                                    System.out.println("isValidDate(cellData) "+ isValidDate(cellData));
 
                                     if(dataLength==0){
                                         errors.add(new ErrorModel("Rule2",rule.getSheet(),Integer.parseInt(entry.getKey().split("#")[1]),rule.getTargetHeader(),"Expected Date format is: "+ format+" but Actual is Empty Cell"));
@@ -186,8 +174,6 @@ public class Rule2ValidatorEngine {
                                         }
                                     }
                                 }
-
-                                // end
 
                                 if(Integer.parseInt(entry.getKey().split("#")[1]) == toNo){
                                     isToEnd = true;
@@ -209,9 +195,6 @@ public class Rule2ValidatorEngine {
             }
 
         }
-
-
-
 
     }
 

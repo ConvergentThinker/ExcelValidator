@@ -1,10 +1,7 @@
 package org.main.datavalidator;
 
-
-
-import org.main.jTable.Rule1.Rule1Model;
+import org.main.jtable.Rule1.Rule1Model;
 import org.main.model.ErrorModel;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -46,9 +43,6 @@ public class Rule1ValidatorEngine {
         return data;
     }
 
-
-
-
     // Rule4: Define Mandatory Columns.
     //Ex: Columns dob,name,nric.. values are should not be empty. must fill.
     public void validateRule4(Map<String, Map<String, Map<String, String>>> inputExcelData, List<Rule1Model> rule1ModelList ) {
@@ -59,22 +53,17 @@ public class Rule1ValidatorEngine {
 
             Rule1Model rule = lstRule1.get(i);
 
-            System.out.println("rule "+ rule);
-
-            System.out.println( "rule.getIsToRun() "+ rule.getIsToRun());
-
             // this IF is to decide which rule to be applied
             if(rule.getIsToRun().equals("Yes")) {
 
                 switch (rule.getRuleExecutionType()) {
 
                     case "All Rows":
-                        System.out.println("ALL");
 
                         Map<String, String> map = getSpecificColumnAllValues(inputExcelData, rule.getSheet(), rule.getTargetHeader().trim());
 
                         for (Map.Entry<String, String> entry : map.entrySet()) {
-                            System.out.println(entry.getKey() + " : " + entry.getValue());
+
                             int dataLength = entry.getValue().trim().length();
 
                             if(dataLength==0){
@@ -84,7 +73,7 @@ public class Rule1ValidatorEngine {
                         break;
 
                     case "Custom":
-                        System.out.println("CUSTOM");
+
 
                         Map<String, String> mapCustom = getSpecificColumnAllValues(inputExcelData, rule.getSheet(), rule.getTargetHeader().trim());
 
@@ -96,7 +85,6 @@ public class Rule1ValidatorEngine {
                             int toNo = Integer.parseInt(rule.getToRow());
 
                                 if(Integer.parseInt(entry.getKey().split("#")[1]) >= fromNo ){
-                                    System.out.println(entry.getKey() + " : " + entry.getValue());
                                     int dataLength = entry.getValue().trim().length();
 
                                     if(dataLength==0){

@@ -1,5 +1,5 @@
 
-package org.main.filechooser;
+package org.main.loadrulefc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,13 +7,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 
-
-public class ImagePreview extends JComponent
+public class RulePreview extends JComponent
                           implements PropertyChangeListener {
     ImageIcon thumbnail = null;
     File file = null;
 
-    public ImagePreview(JFileChooser fc) {
+    public RulePreview(JFileChooser fc) {
         setPreferredSize(new Dimension(100, 50));
         fc.addPropertyChangeListener(this);
     }
@@ -24,9 +23,6 @@ public class ImagePreview extends JComponent
             return;
         }
 
-        //Don't use createImageIcon (which is a wrapper for getResource)
-        //because the image we're trying to load is probably not one
-        //of this program's own resources.
         ImageIcon tmpIcon = new ImageIcon(file.getPath());
         if (tmpIcon != null) {
             if (tmpIcon.getIconWidth() > 90) {
@@ -37,7 +33,7 @@ public class ImagePreview extends JComponent
                 thumbnail = new ImageIcon(tmpIcon.getImage().
                                           getScaledInstance(-1, 50,
                                                       Image.SCALE_DEFAULT));
-            } else {
+            } else { //no need to miniaturize
                 thumbnail = tmpIcon;
             }
         }
