@@ -11,7 +11,13 @@ How it works:
 
 https://youtu.be/mMDUYdiycNI
 
+If you are non-tech person, you can directly run it using below .jar file: 
+https://drive.google.com/file/d/1poiwhO1SG4vlBGw5qqv305WcANWUv0vO/view?usp=sharing
 
+
+Contact: 
+
+LinkedIn - https://www.linkedin.com/in/sakthivel-iyappan/
 
 
 
